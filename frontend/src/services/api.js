@@ -20,23 +20,6 @@ export const uploadNotes = async (file, title) => {
   }
 };
 
-/**
- * getAllNotes - Fetch all uploaded notes
- * 
- * Retrieves metadata for all notes in MongoDB.
- * Only returns: _id and title (embeddings/chunks/fileName are not included)
- * 
- * IMPORTANT: For UploadedNotes.jsx component
- * This is what populates the "NOTES!!" panel in the UI
- * 
- * @returns {Promise<Array>} - Array of notes with _id and title
- * 
- * Example return:
- * [
- *   { _id: "123abc", title: "Operating Systems" },
- *   { _id: "456def", title: "Computer Networks" }
- * ]
- */
 export const getAllNotes = async () => {
   try {
     const response = await axios.get(`${BACKEND_URL}/notes`);
@@ -50,15 +33,6 @@ export const getAllNotes = async () => {
   }
 };
 
-/**
- * askQuestion - Ask a question about uploaded notes
- * 
- * Sends a user question to the RAG system.
- * Backend searches embeddings and generates an AI answer.
- * 
- * @param {string} question - The user's question
- * @returns {Promise} - Response with the AI-generated answer
- */
 export const askQuestion = async (question) => {
   try {
     const response = await axios.post(

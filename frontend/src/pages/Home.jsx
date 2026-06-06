@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import UploadedNotes from '../components/UploadedNotes';
 import FileUpload from '../components/FileUpload';
@@ -49,7 +48,7 @@ function Home() {
     // Auto-clear success message after 5 seconds
     setTimeout(() => {
       setUploadStatus('');
-    }, 5000);
+    }, 7000);
   };
 
   const handleAskQuestion = async (userQuestion) => {

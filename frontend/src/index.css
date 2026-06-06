@@ -1,16 +1,3 @@
-/**
- * index.css - Global Styles
- * 
- * This file is imported in main.jsx and sets global styles
- * that apply to the entire application.
- * 
- * It's separate from App.css to keep global resets and base
- * styles separate from app-specific styles.
- */
-
-/* ========== NORMALIZE STYLES ==========
-   Normalize browser inconsistencies
-*/
 
 /* Apply border-box sizing to all elements */
 *,

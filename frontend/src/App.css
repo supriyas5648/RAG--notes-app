@@ -1,23 +1,4 @@
-/**
- * App.css - Root Application Styles
- * 
- * This file contains global styles for the entire application.
- * These styles apply to all pages and components.
- * 
- * CSS STRUCTURE:
- * 1. CSS Variables (custom properties)
- * 2. Global resets
- * 3. Root element styles
- * 4. Typography
- * 5. Common utility classes
- */
 
-/* ========== CSS VARIABLES ==========
-   CSS Variables (custom properties) let us define colors, spacing, and other values once,
-   then reuse them throughout the app. If we need to change a color scheme, we only change it here.
-   
-   USAGE: var(--variable-name)
-*/
 :root {
   /* Colors */
   --primary-color: #2c3e50;        /* Dark blue-gray for main elements */
