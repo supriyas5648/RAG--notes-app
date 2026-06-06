@@ -78,7 +78,7 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height);
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #1a1f3a;  /* Dark navy background */
 }
 
 /* Main app container */
@@ -86,7 +86,7 @@ body {
   min-height: 100vh;  /* Fill entire viewport height */
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);  /* Subtle gradient background */
+  background-color: #1a1f3a;  /* Dark navy background */
 }
 
 /* ========== TYPOGRAPHY ==========

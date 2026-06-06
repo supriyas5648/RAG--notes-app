@@ -1,109 +1,275 @@
 /**
- * Home.css - Home Page Styles
+ * Home.css - Home Page Styles (NEW LAYOUT)
  * 
- * Styles for the main Home page component and its layout.
+ * REDESIGNED LAYOUT:
+ * ┌──────────────────────────────────────┐
+ * │         HEADER                       │
+ * ├──────────────────┬───────────────────┤
+ * │ NOTES            │  UPLOAD           │ ROW 1
+ * ├──────────────────┴───────────────────┤
+ * │ QUESTION │        ANSWER            │ ROW 2
+ * └──────────┴─────────────────────────┘
  * 
- * LAYOUT STRUCTURE:
- * - Header: Title and subtitle
- * - Content Wrapper: 3-column layout (Upload, Question, Answer)
- * - Footer: Instructions
+ * DESIGN PRINCIPLES:
+ * - Dark navy page background (#1a1f3a)
+ * - White cards with soft shadows
+ * - Purple accents for titles (#667eea)
+ * - Large, spacious layout
+ * - Two-row responsive structure
  */
 
-/* ========== HOME CONTAINER ==========
-   Main container for the entire home page
+/* ========== ROOT CONTAINER ==========
+   Main container for entire page
 */
 .home-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   width: 100%;
 }
 
 /* ========== HEADER SECTION ==========
-   Title and subtitle at the top of the page
+   Title and subtitle at the top
 */
 .header {
   text-align: center;
   margin-bottom: 1rem;
+  padding: 1rem 0;
 }
 
-.header h1 {
-  font-size: 2.8rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
+.header-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.5px;
 }
 
-.subtitle {
+.header-subtitle {
   font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 0;
+  color: #999;
+  margin: 0;
+  font-weight: 400;
 }
 
-/* ========== CONTENT WRAPPER - 3 COLUMN LAYOUT ==========
-   Main layout structure with three columns
-   Uses CSS Grid for responsive layout
+/* ========== LAYOUT ROWS ==========
+   Two-row layout structure
 */
-.content-wrapper {
+.layout-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;  /* 3 equal columns */
-  gap: 2rem;
-  align-items: start;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-/* ========== COLUMN SECTIONS ==========
-   Each section (upload, question, answer) in a column
+/* ROW 1: 2-column layout (Notes | Upload) */
+.row-1 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ROW 2: 2-column layout (Question | Answer) */
+.row-2 {
+  grid-template-columns: 1fr 1.5fr;
+}
+
+/* ========== PANEL BASE STYLES ==========
+   Common styling for all panels/cards
 */
-.column {
+.panel {
   background: white;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.column:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+.panel:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.upload-column,
-.question-column,
-.answer-column {
-  /* All columns have the same base styling */
-}
-
-/* ========== UPLOADED FILE INFO ==========
-   Display which file has been uploaded
+/* ========== SPECIFIC PANEL SIZING ==========
+   Min heights for each panel to ensure good proportions
 */
-.uploaded-file-info {
+.notes-panel {
+  min-height: 400px;
+}
+
+.upload-panel {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-panel {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.answer-panel {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== UPLOAD STATUS MESSAGE ==========
+   Success/error message after upload
+*/
+.upload-status-message {
   margin-top: 1.5rem;
   padding: 1rem;
   background-color: #e8f8f5;
   border-left: 4px solid #27ae60;
-  border-radius: 4px;
+  border-radius: 6px;
+  animation: slideIn 0.3s ease;
 }
 
-.uploaded-file-info p {
-  margin-bottom: 0;
+.status-success {
+  margin: 0;
   color: #27ae60;
   font-weight: 500;
+  font-size: 0.95rem;
 }
 
-/* ========== FOOTER SECTION ==========
-   Instructions at the bottom of the page
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== RESPONSIVE LAYOUT ==========
+   Adjust layout for tablet and mobile
 */
-.footer {
-  background: white;
+@media (max-width: 1400px) {
+  .layout-row {
+    gap: 1.2rem;
+  }
+
+  .panel {
+    padding: 1.5rem;
+  }
+
+  .header-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .row-1 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .question-panel,
+  .answer-panel {
+    min-height: 300px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+  }
+
+  .panel {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .row-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-panel,
+  .upload-panel {
+    min-height: 280px;
+  }
+
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .question-panel,
+  .answer-panel {
+    min-height: 250px;
+  }
+
+  .header-title {
+    font-size: 1.8rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .panel {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .header {
+    margin-bottom: 0.5rem;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .layout-row {
+    gap: 0.75rem;
+  }
+
+  .panel {
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .notes-panel,
+  .upload-panel,
+  .question-panel,
+  .answer-panel {
+    min-height: 220px;
+  }
+}
+
+  /* background: white;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
-}
+} */
 
 .footer h3 {
   color: #2c3e50;

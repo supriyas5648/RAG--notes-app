@@ -87,21 +87,26 @@ const uploadNote = async (req, res, next) => {
   }
 };
 
-// Retrieve all notes metadata
+// Retrieve all notes metadata (without loading the heavy chunk embeddings)
 const getNotes = async (req, res, next) => {
   try {
-    const notes = await Note.find().select(
-      '_id title originalFileName createdAt'
-    );
-
-    const notesWithChunkCount = notes.map((note) => ({
-      ...note.toObject(),
-      chunkCount: note.chunks.length,
-    }));
+    // Use aggregation so we can report chunkCount via $size without
+    // pulling every chunk's embedding vector out of the database.
+    const notes = await Note.aggregate([
+      { $sort: { createdAt: -1 } },
+      {
+        $project: {
+          title: 1,
+          originalFileName: 1,
+          createdAt: 1,
+          chunkCount: { $size: { $ifNull: ['$chunks', []] } },
+        },
+      },
+    ]);
 
     res.status(200).json({
       success: true,
-      data: notesWithChunkCount,
+      data: notes,
     });
   } catch (error) {
     next(error);

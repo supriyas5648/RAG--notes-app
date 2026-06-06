@@ -49,10 +49,16 @@ const retrieveRelevantChunks = async (question, topK = 5) => {
 // Generate answer using Gemini with retrieved context
 const generateAnswer = async (question, relevantChunks) => {
   try {
+    // --- DEBUG: post-retrieval flow ---
+    console.log('Creating context...');
+
     // Build context from relevant chunks
-    const context = relevantChunks
+    const context = (relevantChunks || [])
       .map((chunk) => `[Note: ${chunk.noteTitle}]\n${chunk.text}`)
       .join('\n\n---\n\n');
+
+    // --- DEBUG: safe length check ---
+    console.log('Context length:', context?.length);
 
     // Construct prompt for Groq's LLM
     // This instructs the model to answer based on the provided context
@@ -65,10 +71,14 @@ Question: ${question}
 
 Answer:`;
 
+    // --- DEBUG ---
+    console.log('Prompt generated');
+
     // Call Groq API to generate answer
     // Groq uses Meta's Llama model for fast, accurate text generation
     // The API will generate a response based on the context and question
-    const message = await client.chat.completions.create({
+    console.log('Sending request to Groq');
+    const response = await client.chat.completions.create({
       messages: [
         {
           role: 'user',
@@ -80,10 +90,28 @@ Answer:`;
       max_tokens: 1024,
     });
 
-    const answer = message.choices[0].message.content;
+    // --- DEBUG ---
+    console.log('Groq response received');
+    console.log(JSON.stringify(response, null, 2));
+
+    // Safe extraction so a malformed/empty response surfaces a clear message
+    // instead of throwing "Cannot read properties of undefined".
+    const answer = response?.choices?.[0]?.message?.content;
+
+    // --- DEBUG ---
+    console.log('Answer:', answer);
+
+    if (!answer) {
+      throw new Error(
+        `Groq returned no answer content. choices length: ${response?.choices?.length}`
+      );
+    }
 
     return answer;
   } catch (error) {
+    // Log the underlying error so the real cause is visible in the console,
+    // not just the wrapped "Answer generation failed" message.
+    console.error('generateAnswer error:', error);
     throw new Error(`Answer generation failed: ${error.message}`);
   }
 };

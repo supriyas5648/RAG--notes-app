@@ -1,0 +1,147 @@
+/**
+ * UploadedNotes.css - Uploaded Notes Panel Styles
+ * 
+ * Styling for the NOTES!! panel that displays all uploaded documents
+ * Located in the top-left of the layout
+ * 
+ * DESIGN PRINCIPLES:
+ * - Large prominent title
+ * - Scrollable list for many notes
+ * - Clean numbered list
+ * - White card on dark background
+ */
+
+/* ========== UPLOADED NOTES PANEL CONTAINER ==========
+   Main container for the entire notes panel
+*/
+.uploaded-notes-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* ========== PANEL TITLE ==========
+   "NOTES!!" title at the top
+*/
+.panel-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 1px;
+}
+
+/* ========== NOTES LIST CONTAINER ==========
+   Wrapper for the scrollable list
+*/
+.notes-list-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* ========== SCROLLBAR STYLING ==========
+   Custom scrollbar for the notes list
+   Works in modern browsers (Chrome, Edge, Safari)
+*/
+.notes-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notes-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.notes-list-container::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.notes-list-container::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+/* ========== NOTES LIST ==========
+   Ordered list of notes
+*/
+.notes-list {
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  list-style-type: decimal;
+}
+
+/* ========== NOTE ITEM ==========
+   Individual note in the list
+*/
+.note-item {
+  padding: 0.75rem 0;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.note-item:hover {
+  color: #667eea;
+}
+
+/* ========== STATE MESSAGES ==========
+   Loading, empty, and error messages
+*/
+.loading-message,
+.empty-message,
+.error-message {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #999;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.empty-message {
+  color: #aaa;
+  font-style: italic;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Adjust for smaller screens
+*/
+@media (max-width: 1200px) {
+  .uploaded-notes-panel {
+    min-height: 300px;
+  }
+
+  .panel-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .uploaded-notes-panel {
+    min-height: 250px;
+  }
+
+  .panel-title {
+    font-size: 1.3rem;
+  }
+
+  .notes-list {
+    padding-left: 1.2rem;
+  }
+
+  .note-item {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+}
