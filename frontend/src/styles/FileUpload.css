@@ -1,0 +1,193 @@
+/**
+ * FileUpload.css - File Upload Component Styles
+ * 
+ * Styles for the file upload component including:
+ * - File input styling
+ * - Upload button
+ * - Success and error messages
+ * - Loading states
+ */
+
+/* ========== UPLOAD CONTAINER ==========
+   Main wrapper for upload component
+*/
+.upload-container h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ========== TITLE INPUT ==========
+   Input field for document title (NEW FIELD REQUIRED BY BACKEND)
+*/
+.title-input-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.title-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.title-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.title-input:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.title-input:disabled {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* ========== FILE INPUT STYLING ==========
+   Custom styled file input (looks better than default browser input)
+   Browser's default file input is ugly, so we hide it and style a custom label instead
+*/
+.file-input-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* Hide the default file input */
+.file-input {
+  display: none;
+}
+
+/* Style the label as a fake file input */
+.file-label {
+  display: block;
+  padding: 1rem;
+  border: 2px dashed #3498db;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Hover effect on file label */
+.file-label:hover {
+  border-color: #2980b9;
+  background-color: #e3f2fd;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+/* ========== UPLOAD BUTTON ==========
+   Primary button for submitting file
+*/
+.upload-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+/* Hover state for upload button */
+.upload-btn:hover:not(:disabled) {
+  background-color: #2980b9;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Disabled state for upload button */
+.upload-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ========== SUCCESS MESSAGE ==========
+   Green message showing successful upload
+*/
+.success-message {
+  padding: 1rem;
+  background-color: #d4edda;
+  border-left: 4px solid #27ae60;
+  color: #155724;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+/* ========== ERROR MESSAGE ==========
+   Red message showing upload error
+*/
+.error-message {
+  padding: 1rem;
+  background-color: #f8d7da;
+  border-left: 4px solid #e74c3c;
+  color: #721c24;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+/* ========== ANIMATIONS ==========
+   Smooth animations for messages appearing
+*/
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Adjust styles for smaller screens
+*/
+@media (max-width: 768px) {
+  .file-label {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .upload-btn {
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .file-label {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .success-message,
+  .error-message {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+}

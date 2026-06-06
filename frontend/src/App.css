@@ -1,0 +1,190 @@
+/**
+ * App.css - Root Application Styles
+ * 
+ * This file contains global styles for the entire application.
+ * These styles apply to all pages and components.
+ * 
+ * CSS STRUCTURE:
+ * 1. CSS Variables (custom properties)
+ * 2. Global resets
+ * 3. Root element styles
+ * 4. Typography
+ * 5. Common utility classes
+ */
+
+/* ========== CSS VARIABLES ==========
+   CSS Variables (custom properties) let us define colors, spacing, and other values once,
+   then reuse them throughout the app. If we need to change a color scheme, we only change it here.
+   
+   USAGE: var(--variable-name)
+*/
+:root {
+  /* Colors */
+  --primary-color: #2c3e50;        /* Dark blue-gray for main elements */
+  --secondary-color: #3498db;      /* Bright blue for buttons and accents */
+  --success-color: #27ae60;         /* Green for success messages */
+  --error-color: #e74c3c;           /* Red for errors */
+  --warning-color: #f39c12;         /* Orange for warnings */
+  
+  /* Neutral colors */
+  --text-color: #2c3e50;           /* Main text color */
+  --background-color: #ecf0f1;     /* Light background */
+  --border-color: #bdc3c7;         /* Border color */
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border radius */
+  --border-radius: 8px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  /* Fonts */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+}
+
+/* ========== GLOBAL RESETS ==========
+   Browser defaults vary, so we reset them for consistency.
+   This ensures our app looks the same in all browsers.
+*/
+
+/* Reset all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* Include padding and border in width/height calculations */
+}
+
+/* ========== GLOBAL STYLES ==========
+   These styles apply to the entire app
+*/
+
+html {
+  scroll-behavior: smooth;  /* Smooth scrolling when jumping to anchors */
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Main app container */
+.app {
+  min-height: 100vh;  /* Fill entire viewport height */
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);  /* Subtle gradient background */
+}
+
+/* ========== TYPOGRAPHY ==========
+   Heading and text styles throughout the app
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* ========== COMMON COMPONENTS ==========
+   Reusable styles for buttons, inputs, etc.
+*/
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.3s ease;  /* Smooth transitions on hover */
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);  /* Slight lift effect on hover */
+  box-shadow: var(--shadow-md);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input, textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+/* ========== UTILITY CLASSES ==========
+   Helper classes used throughout the app
+*/
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Mobile-first approach: start with mobile, add styles for larger screens
+*/
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+}

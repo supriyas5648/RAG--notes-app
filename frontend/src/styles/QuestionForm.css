@@ -1,0 +1,133 @@
+/**
+ * QuestionForm.css - Question Form Component Styles
+ * 
+ * Styles for the question form including:
+ * - Textarea for question input
+ * - Ask button
+ * - Helper text
+ * - Focus and hover states
+ */
+
+/* ========== FORM CONTAINER ==========
+   Main wrapper for question form
+*/
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question-form h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* ========== TEXTAREA INPUT ==========
+   Main input area where user types their question
+*/
+.question-input {
+  flex: 1;
+  min-height: 150px;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;  /* Allow vertical resize only */
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+/* Focus state: highlight border when user clicks in textarea */
+.question-input:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Disabled state: grayed out when waiting for answer */
+.question-input:disabled {
+  opacity: 0.6;
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* ========== ASK BUTTON ==========
+   Submit button for sending question
+*/
+.ask-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover state for ask button */
+.ask-btn:hover:not(:disabled) {
+  background-color: #2980b9;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Disabled state while waiting for answer */
+.ask-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ========== HELPER TEXT ==========
+   Information text about keyboard shortcuts
+*/
+.helper-text {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 0;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Adjust styles for smaller screens
+*/
+@media (max-width: 768px) {
+  .question-input {
+    min-height: 120px;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .ask-btn {
+    padding: 0.6rem 1rem;
+  }
+  
+  .helper-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-input {
+    min-height: 100px;
+    padding: 0.6rem;
+  }
+  
+  .helper-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== KEYBOARD INTERACTION FEEDBACK ==========
+   Subtle feedback when user interacts with form
+*/
+.question-form:has(.question-input:focus) {
+  /* Could add additional styling when input is focused */
+}

@@ -1,0 +1,182 @@
+/**
+ * Home.css - Home Page Styles
+ * 
+ * Styles for the main Home page component and its layout.
+ * 
+ * LAYOUT STRUCTURE:
+ * - Header: Title and subtitle
+ * - Content Wrapper: 3-column layout (Upload, Question, Answer)
+ * - Footer: Instructions
+ */
+
+/* ========== HOME CONTAINER ==========
+   Main container for the entire home page
+*/
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ========== HEADER SECTION ==========
+   Title and subtitle at the top of the page
+*/
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* ========== CONTENT WRAPPER - 3 COLUMN LAYOUT ==========
+   Main layout structure with three columns
+   Uses CSS Grid for responsive layout
+*/
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;  /* 3 equal columns */
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ========== COLUMN SECTIONS ==========
+   Each section (upload, question, answer) in a column
+*/
+.column {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.column:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.upload-column,
+.question-column,
+.answer-column {
+  /* All columns have the same base styling */
+}
+
+/* ========== UPLOADED FILE INFO ==========
+   Display which file has been uploaded
+*/
+.uploaded-file-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e8f8f5;
+  border-left: 4px solid #27ae60;
+  border-radius: 4px;
+}
+
+.uploaded-file-info p {
+  margin-bottom: 0;
+  color: #27ae60;
+  font-weight: 500;
+}
+
+/* ========== FOOTER SECTION ==========
+   Instructions at the bottom of the page
+*/
+.footer {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.footer h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.footer ol {
+  margin-left: 1.5rem;
+  line-height: 1.8;
+}
+
+.footer li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Adapt layout for smaller screens
+*/
+
+/* Tablet: 2 columns, footer takes full width */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .home-container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile: Stack columns vertically */
+@media (max-width: 768px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .column {
+    padding: 1.5rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .home-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+/* Small mobile: Further optimizations */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0.5rem;
+  }
+  
+  .column {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .footer ol {
+    margin-left: 1rem;
+  }
+}

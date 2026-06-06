@@ -1,0 +1,201 @@
+/**
+ * index.css - Global Styles
+ * 
+ * This file is imported in main.jsx and sets global styles
+ * that apply to the entire application.
+ * 
+ * It's separate from App.css to keep global resets and base
+ * styles separate from app-specific styles.
+ */
+
+/* ========== NORMALIZE STYLES ==========
+   Normalize browser inconsistencies
+*/
+
+/* Apply border-box sizing to all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+button,
+input,
+textarea,
+select,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== BODY STYLES ==========
+   Base styling for the entire document
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fafafa;
+}
+
+/* ========== HTML STYLES ==========
+   Base HTML styles
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== CODE STYLES ==========
+   For displaying code in answers
+*/
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ========== LINK STYLES ==========
+   Default link styling
+*/
+
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* ========== LIST STYLES ==========
+   List styling
+*/
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ========== IMAGE STYLES ==========
+   Responsive images
+*/
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== FORM ELEMENTS ==========
+   Default form styling
+*/
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Remove default border from buttons */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ========== SCROLLBAR STYLING ==========
+   Custom scrollbar for better look
+   Only works in Chrome/Edge, ignored in other browsers
+*/
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ========== SELECTION STYLING ==========
+   Style for selected text
+*/
+
+::selection {
+  background-color: #3498db;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #3498db;
+  color: white;
+}
+
+/* ========== PRINT STYLES ==========
+   How to print the page (if user prints it)
+*/
+
+@media print {
+  body {
+    background: white;
+  }
+  
+  a {
+    color: #000;
+  }
+}

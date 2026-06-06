@@ -1,0 +1,219 @@
+/**
+ * AnswerBox.css - Answer Display Component Styles
+ * 
+ * Styles for displaying AI-generated answers including:
+ * - Answer content display
+ * - Loading spinner
+ * - Error messages
+ * - Empty/placeholder states
+ */
+
+/* ========== ANSWER BOX CONTAINER ==========
+   Main wrapper for the answer display
+*/
+.answer-box {
+  min-height: 300px;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.answer-box h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+/* ========== EMPTY STATE ==========
+   Shown when no question has been asked yet
+*/
+.answer-box.empty {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.placeholder-text {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* ========== LOADING STATE ==========
+   Shown while waiting for answer from backend
+*/
+.answer-box.loading {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Loading spinner animation */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+/* Spinner animation: rotate continuously */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Pulsing animation for loading text */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ========== ERROR STATE ==========
+   Shown when API call fails
+*/
+.answer-box.error {
+  background: linear-gradient(135deg, #fef5e7 0%, #f8d7da 100%);
+  border-left: 4px solid #e74c3c;
+}
+
+.answer-box.error h3 {
+  color: #721c24;
+}
+
+.error-text {
+  color: #721c24;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  border-left: 3px solid #e74c3c;
+}
+
+.error-hint {
+  color: #555;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* ========== SUCCESS STATE ==========
+   Shown when answer is successfully retrieved
+*/
+.answer-box.success {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f5e9 100%);
+  border: 2px solid #27ae60;
+  border-left: 4px solid #27ae60;
+}
+
+.answer-box.success h3 {
+  color: #155724;
+}
+
+/* ========== ANSWER CONTENT ==========
+   The actual answer text
+*/
+.answer-content {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 1rem;
+}
+
+/* Scrollbar styling for better look */
+.answer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.answer-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.answer-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.answer-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Paragraph styling within answer */
+.answer-paragraph {
+  color: #2c3e50;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+.answer-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== RESPONSIVE DESIGN ==========
+   Adjust styles for smaller screens
+*/
+@media (max-width: 768px) {
+  .answer-box {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+  
+  .loading-text {
+    font-size: 0.95rem;
+  }
+  
+  .answer-content {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .answer-box {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .placeholder-text,
+  .loading-text {
+    font-size: 0.95rem;
+  }
+  
+  .answer-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .answer-content {
+    max-height: 250px;
+  }
+}

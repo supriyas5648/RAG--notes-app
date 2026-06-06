@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Notes Assistant</title>
+    <!-- 
+      This is the HTML entry point for the React application.
+      
+      HOW IT WORKS:
+      1. Browser loads this HTML file
+      2. <div id="root"></div> is where React will render the app
+      3. Browser downloads and runs main.jsx (bundled by Vite)
+      4. React renders the App component into the root div
+      5. User sees the complete UI
+      
+      Everything inside the root div is managed by React.
+    -->
+  </head>
+  <body>
+    <!-- 
+      This div is the mounting point for React.
+      React will take over and render all components here.
+    -->
+    <div id="root"></div>
+    
+    <!-- 
+      This script tag loads the bundled React application.
+      Type="module" tells browser this is an ES module.
+      Vite automatically handles the bundling during development and production.
+    -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
